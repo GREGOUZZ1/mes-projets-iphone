@@ -1,0 +1,17 @@
+{
+  "name": "Mes Projets — Mon espace",
+  "short_name": "Mes Projets",
+  "description": "Tes sites, applications et projets, accessibles depuis ton iPhone.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#090c14",
+  "theme_color": "#090c14",
+  "orientation": "portrait-primary",
+  "icons": [
+    {"src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
