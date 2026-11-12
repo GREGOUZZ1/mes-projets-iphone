@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d15">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mes Projets">
+  <meta name="description" content="Tous tes sites, applications et projets accessibles depuis un seul endroit.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="./icons/icon-192.png">
+  <title>Mes Projets — Mon espace</title>
+  <style>
+    :root { color-scheme: dark; --bg:#090c14; --surface:#141827; --surface2:#1b2030; --border:rgba(255,255,255,.085); --text:#f8f9ff; --muted:#a5adbf; --muted2:#747e94; --accent:#9c8aff; --accent2:#6866fb; --shadow:0 24px 65px rgba(0,0,0,.27); --safe-bottom:env(safe-area-inset-bottom,0px); --safe-top:env(safe-area-inset-top,0px) }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;min-height:100dvh;background:var(--bg);color:var(--text);font:15px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+    button,input,textarea,select{font:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}button:disabled{opacity:.5;cursor:not-allowed}a{color:inherit}svg{display:block} :focus-visible{outline:2px solid #c2b7ff;outline-offset:3px}
+    body::before{content:"";pointer-events:none;position:fixed;left:50%;top:-160px;width:660px;height:490px;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 5%,rgba(91,73,180,.22),transparent 65%);z-index:0}
+    .app{position:relative;z-index:1;max-width:990px;margin:0 auto;padding:calc(29px + var(--safe-top)) 25px calc(112px + var(--safe-bottom))}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:47px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none}.brand-icon{display:grid;place-items:center;width:43px;height:43px;border-radius:14px;background:linear-gradient(140deg,#ab93ff 0%,#655efa 100%);box-shadow:0 8px 28px rgba(106,93,245,.3)}.brand-text{font-size:17px;font-weight:800;letter-spacing:-.55px}.brand-text span{color:#b9a9ff}.top-right{display:flex;align-items:center;gap:10px}.tiny-pill{border:1px solid var(--border);background:rgba(255,255,255,.035);color:var(--muted);font-size:11px;font-weight:700;padding:9px 11px;border-radius:30px;letter-spacing:.08em}.icon-btn{border:1px solid var(--border);background:rgba(255,255,255,.035);color:#d8daf0;border-radius:13px;width:43px;height:43px;display:grid;place-items:center}.icon-btn:active,.btn:active,.card:active{transform:scale(.985)}
+    .intro{margin-bottom:27px}.eyebrow{display:flex;align-items:center;gap:8px;text-transform:uppercase;font-size:11px;letter-spacing:.19em;font-weight:750;color:#b09cff;margin-bottom:11px}.eyebrow::before{content:"";width:6px;height:6px;background:#b39fff;box-shadow:0 0 12px #a78bff;border-radius:50%}.intro h1{font-size:clamp(34px,5vw,53px);line-height:1.08;letter-spacing:-.065em;font-weight:820;margin:0 0 14px;max-width:700px}.gradient-text{background:linear-gradient(100deg,#bda9ff 0%,#8e91ff 85%);color:transparent;-webkit-background-clip:text;background-clip:text}.intro p{color:var(--muted);margin:0;font-size:14px;max-width:580px;line-height:1.6}
+    .hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;background:linear-gradient(115deg,#665bea 0%,#806de9 46%,#a18bfb 100%);min-height:173px;border:1px solid rgba(255,255,255,.15);border-radius:23px;padding:24px 27px;box-shadow:0 17px 50px rgba(74,62,167,.27);margin-bottom:33px}.hero::before{content:"";pointer-events:none;position:absolute;border:1px solid rgba(255,255,255,.21);width:360px;height:360px;border-radius:50%;right:-110px;top:-220px;box-shadow:0 0 0 60px rgba(255,255,255,.045),0 0 0 120px rgba(255,255,255,.03)}.hero-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:750;opacity:.87}.hero-count{font-size:46px;line-height:1.05;letter-spacing:-.065em;font-weight:820;margin-top:9px}.hero-count small{font-size:14px;font-weight:600;letter-spacing:0;opacity:.85;margin-left:5px}.hero-foot{opacity:.83;font-size:12px;margin-top:5px}.hero .btn-light{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;background:#fff;color:#403c83;font-weight:800;border:0;border-radius:13px;padding:12px 15px;white-space:nowrap;box-shadow:0 8px 25px rgba(55,46,130,.19)}
+    .section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.section-heading h2{font-size:21px;letter-spacing:-.035em;margin:0;font-weight:790}.section-heading .label-count{font-size:12px;color:var(--muted2);font-weight:650}
+    .tools{display:flex;gap:10px;align-items:center;margin-bottom:16px}.search-box{position:relative;flex:1}.search-box input{background:#151a28;border:1px solid var(--border);border-radius:14px;width:100%;color:var(--text);padding:14px 15px 14px 43px;outline:none;font-size:14px;min-height:49px}.search-box input:focus{border-color:#8e7dff;box-shadow:0 0 0 3px rgba(142,125,255,.12)}.search-box input::placeholder{color:#778198}.search-box svg{position:absolute;top:50%;left:16px;transform:translateY(-50%);color:#9aa3b5}.sort-btn{min-height:49px;display:flex;gap:8px;align-items:center;padding:0 14px;border-radius:14px;background:#151a28;border:1px solid var(--border);color:#d5d8e5;font-size:13px;font-weight:700}
+    .tabs{display:flex;gap:8px;overflow:auto;scrollbar-width:none;padding:1px 0 4px;margin-bottom:20px}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;flex:none;border:1px solid var(--border);background:#121622;color:#919aae;font-size:12px;font-weight:750;padding:10px 14px;border-radius:40px}.tab[aria-pressed="true"]{background:rgba(149,130,255,.15);color:#cfbfff;border-color:rgba(151,126,255,.55)}
+    .projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.card{position:relative;min-height:170px;background:linear-gradient(130deg,#1a1d2a,#141826);border:1px solid var(--border);border-radius:20px;padding:19px;box-shadow:0 8px 23px rgba(0,0,0,.06);transition:background .18s,border-color .18s,transform .15s}.card:hover{border-color:rgba(174,161,255,.33);background:#1d2031}.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.project-emoji{display:grid;place-items:center;width:47px;height:47px;border-radius:15px;background:var(--card-tint,rgba(150,128,255,.2));font-size:24px}.card-actions{display:flex;align-items:center;gap:2px;margin-right:-6px;margin-top:-6px}.card-actions button{border:0;background:transparent;color:#81899d;width:35px;height:35px;display:grid;place-items:center;border-radius:9px}.card-actions button:hover{background:rgba(255,255,255,.07);color:white}.card-actions button.faved{color:#ffcf7b}.card-title{font-size:17px;letter-spacing:-.035em;font-weight:780;margin:18px 0 5px;overflow-wrap:anywhere}.card-desc{font-size:12px;line-height:1.45;color:#97a0b2;min-height:18px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:23px}.category{font-size:10px;text-transform:uppercase;letter-spacing:.095em;font-weight:780;color:#a9a0c5}.open-btn{display:inline-flex;gap:7px;align-items:center;border:0;background:rgba(155,139,255,.13);color:#c7b7ff;border-radius:10px;font-size:12px;font-weight:750;padding:9px 12px}.open-btn:hover{background:rgba(155,139,255,.24)}
+    .empty{border:1px dashed rgba(186,174,255,.19);border-radius:23px;background:rgba(22,25,39,.62);text-align:center;padding:43px 21px 44px}.empty-icon{height:76px;width:76px;margin:0 auto 18px;display:grid;place-items:center;background:rgba(152,132,255,.12);border:1px solid rgba(152,132,255,.22);border-radius:23px;font-size:32px}.empty h3{font-size:19px;letter-spacing:-.04em;margin:0 0 8px}.empty p{color:var(--muted);font-size:13px;line-height:1.55;max-width:340px;margin:0 auto 22px}.btn{background:#9987ff;color:#151224;border:0;border-radius:12px;padding:12px 16px;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn:hover{background:#b09fff}.btn-secondary{background:#252a3d;color:#e8e5fa}.btn-secondary:hover{background:#303751}.btn-danger{background:rgba(235,89,117,.12);color:#ff9aab}.btn-danger:hover{background:rgba(235,89,117,.18)}
+    .bottom-nav{position:fixed;z-index:25;left:0;right:0;bottom:0;display:none;justify-content:space-around;background:rgba(15,18,28,.94);border-top:1px solid rgba(255,255,255,.08);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:10px 16px calc(10px + var(--safe-bottom))}.nav-item{display:flex;flex:1;align-items:center;justify-content:center;flex-direction:column;gap:5px;background:transparent;color:#858da2;border:0;min-height:48px;font-size:10px;font-weight:760;letter-spacing:.02em}.nav-item.current{color:#bbaaFF}.nav-item svg{width:21px;height:21px}
+    .overlay{position:fixed;inset:0;z-index:60;background:rgba(3,5,12,.74);display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}[hidden]{display:none!important}.dialog{width:min(100%,510px);max-height:min(90dvh,880px);overflow:auto;overscroll-behavior:contain;background:#171b2a;border:1px solid #32334e;border-radius:24px;box-shadow:0 40px 130px rgba(0,0,0,.55);padding:23px}.dialog-header{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:22px}.dialog-header h2{font-size:22px;letter-spacing:-.05em;margin:0 0 4px}.dialog-header p{font-size:12px;color:#9ba4b8;margin:0}.close{background:#252a3b;border:0;border-radius:12px;color:#cad0de;height:36px;width:36px;display:grid;place-items:center;flex:none}.form-row{margin-bottom:16px}.form-row label{display:block;font-size:12px;font-weight:760;color:#e3e5ed;margin-bottom:8px}.form-row input,.form-row select,.form-row textarea{display:block;width:100%;border:1px solid #353a50;border-radius:12px;padding:12px 13px;color:#f2f2fa;background:#202536;outline:none;min-height:46px}.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:#a28fff;box-shadow:0 0 0 3px rgba(162,143,255,.12)}.form-row textarea{resize:vertical;min-height:72px}.form-row input::placeholder,.form-row textarea::placeholder{color:#727b91}.form-note{font-size:11px;color:#8490a6;margin-top:6px}.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.emoji-options{display:flex;gap:8px;flex-wrap:wrap}.emoji-option{border:1px solid #353a50;background:#202536;min-width:43px;height:43px;border-radius:11px;font-size:22px}.emoji-option[aria-pressed="true"]{background:#3a325d;border-color:#a28fff}.color-options{display:flex;gap:12px;align-items:center}.color-choice{width:29px;height:29px;background:var(--swatch);border:3px solid #171b2a;border-radius:50%;outline:1px solid transparent}.color-choice[aria-pressed="true"]{outline:2px solid #fff}.dialog-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:24px}.dialog-actions-end{margin-left:auto;display:flex;gap:10px;align-items:center}.settings-section{background:#202536;border-radius:16px;padding:16px;margin:15px 0}.settings-section h3{font-size:14px;margin:0 0 6px}.settings-section p,.settings-section li{font-size:12px;color:#aab3c7;line-height:1.65}.settings-section p{margin:0 0 13px}.settings-section ol{padding-left:19px;margin:7px 0}.settings-row{display:flex;gap:9px;flex-wrap:wrap}.settings-footer{font-size:11px;color:#858ea3;line-height:1.55;margin-top:17px}.toast{position:fixed;z-index:90;bottom:calc(95px + var(--safe-bottom));left:50%;transform:translate(-50%,20px);min-width:210px;max-width:min(calc(100vw - 30px),420px);text-align:center;background:#ebe8ff;color:#2b264a;padding:13px 18px;border-radius:14px;box-shadow:var(--shadow);font-size:13px;font-weight:750;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s}.toast.shown{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:660px){.app{padding:calc(25px + var(--safe-top)) 20px calc(112px + var(--safe-bottom))}.topbar{margin-bottom:37px}.intro h1{font-size:37px}.hero{min-height:156px;margin-bottom:31px;padding:22px}.hero-count{font-size:40px}.hero .btn-light{font-size:12px;padding:11px}.projects-grid{grid-template-columns:1fr}.card{min-height:165px}.bottom-nav{display:flex}.top-right .tiny-pill{display:none}.sort-btn{padding:0 11px}.card-title{margin-top:14px}}
+    @media(max-width:390px){.app{padding-left:17px;padding-right:17px}.intro h1{font-size:34px}.hero{padding:19px}.hero .btn-light{font-size:11px;padding:10px}.hero-count{font-size:37px}.topbar{margin-bottom:31px}.dialog{padding:18px}.overlay{padding:12px}.two-fields{grid-template-columns:1fr}.dialog-actions{flex-wrap:wrap}}
+    @media(max-height:680px){.overlay{align-items:flex-end}.dialog{max-height:94dvh}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#accueil" aria-label="Mes Projets, accueil">
+        <span class="brand-icon" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 28 28" fill="none"><rect x="5" y="4" width="12" height="12" rx="3" stroke="white" stroke-width="2.6"/><rect x="11" y="12" width="12" height="12" rx="3" stroke="white" stroke-width="2.6"/></svg></span>
+        <span class="brand-text">mes<span>projets.</span></span>
+      </a>
+      <div class="top-right"><span class="tiny-pill">MON ESPACE</span><button type="button" class="icon-btn" id="settingsTop" aria-label="Réglages"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.8 1.8-.07-.06A1.7 1.7 0 0 0 16.1 18a1.7 1.7 0 0 0-1.1 1.56V20h-2.6v-.44A1.7 1.7 0 0 0 11.3 18a1.7 1.7 0 0 0-1.87.34l-.06.06-1.8-1.8.06-.07A1.7 1.7 0 0 0 8 14.7a1.7 1.7 0 0 0-1.56-1.1H6v-2.6h.44A1.7 1.7 0 0 0 8 9.9a1.7 1.7 0 0 0-.34-1.87l-.06-.06 1.8-1.8.07.06A1.7 1.7 0 0 0 11.3 6a1.7 1.7 0 0 0 1.1-1.56V4h2.6v.44A1.7 1.7 0 0 0 16.1 6a1.7 1.7 0 0 0 1.87-.34l.06-.06 1.8 1.8-.06.07A1.7 1.7 0 0 0 19.4 9.3a1.7 1.7 0 0 0 1.56 1.1h.44V13h-.44A1.7 1.7 0 0 0 19.4 15Z" transform="translate(-1.7 -.1)"/></svg></button></div>
+    </header>
+    <section class="intro" id="accueil"><div class="eyebrow">Ton espace personnel</div><h1>Tous tes projets.<br><span class="gradient-text">Un seul endroit.</span></h1><p>Retrouve tes sites, tes applications et tes idées en un clin d’œil. Organise ton univers, à ta façon.</p></section>
+    <section class="hero" aria-label="Résumé de tes projets"><div><div class="hero-label">Mon tableau de bord</div><div class="hero-count"><span id="projectCount">0</span><small id="projectWord">projet</small></div><div class="hero-foot" id="favoriteSummary">Ton espace est prêt à être rempli ✨</div></div><button type="button" class="btn-light" id="heroAdd"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Ajouter</button></section>
+    <section id="projectsSection" aria-label="Liste des projets"><div class="section-heading"><h2>Mes projets</h2><span class="label-count" id="visibleCount">0 projet</span></div>
+      <div class="tools"><label class="search-box" aria-label="Rechercher un projet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Rechercher un projet..." autocomplete="off"></label><button type="button" class="sort-btn" id="sortBtn" title="Changer l'ordre de tri"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"/></svg><span id="sortLabel">Récents</span></button></div>
+      <div class="tabs" role="group" aria-label="Filtrer les projets"><button type="button" class="tab" data-filter="all" aria-pressed="true">Tous</button><button type="button" class="tab" data-filter="favorite" aria-pressed="false">★ Favoris</button><button type="button" class="tab" data-filter="site" aria-pressed="false">🌐 Sites</button><button type="button" class="tab" data-filter="app" aria-pressed="false">📱 Applications</button><button type="button" class="tab" data-filter="other" aria-pressed="false">✨ Autres</button></div>
+      <div class="projects-grid" id="projects" aria-live="polite"></div>
+      <div class="empty" id="empty"><div class="empty-icon" aria-hidden="true">🚀</div><h3 id="emptyTitle">Ton prochain projet commence ici</h3><p id="emptyText">Ajoute ton premier site ou ta première application pour y accéder directement depuis ton iPhone.</p><button type="button" class="btn" id="emptyAdd">+ Ajouter un projet</button></div>
+    </section>
+  </main>
+  <nav class="bottom-nav" aria-label="Navigation principale"><button type="button" class="nav-item current" id="homeNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"/><path d="M9 21v-7h6v7"/></svg>Accueil</button><button type="button" class="nav-item" id="addNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>Ajouter</button><button type="button" class="nav-item" id="settingsNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M5.6 5.6l2.8 2.8m7.2 7.2 2.8 2.8M18.4 5.6l-2.8 2.8m-7.2 7.2-2.8 2.8"/><circle cx="12" cy="12" r="4"/></svg>Réglages</button></nav>
+
+  <div class="overlay" id="editOverlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="editHeading"><div class="dialog-header"><div><h2 id="editHeading">Ajouter un projet</h2><p>Un lien, et il est toujours à portée de main.</p></div><button class="close" id="editClose" aria-label="Fermer" type="button">✕</button></div>
+    <form id="projectForm"><div class="form-row"><label for="nameField">Nom du projet *</label><input id="nameField" name="name" maxlength="60" required placeholder="Ex. Mon portfolio" autocomplete="off"></div><div class="form-row"><label for="urlField">Lien du site ou de l'application *</label><input id="urlField" name="url" maxlength="2000" required placeholder="https://monsite.fr" inputmode="url" spellcheck="false" autocapitalize="none" autocomplete="off"><div class="form-note">Colle une adresse web ou un lien d'ouverture d'application compatible.</div></div><div class="two-fields"><div class="form-row"><label for="typeField">Catégorie</label><select id="typeField" name="type"><option value="site">🌐 Site web</option><option value="app">📱 Application</option><option value="other">✨ Autre projet</option></select></div><div class="form-row"><label for="descriptionField">Description (facultatif)</label><input id="descriptionField" name="description" maxlength="180" placeholder="Une petite description..."></div></div><div class="form-row"><label>Icône</label><div class="emoji-options" id="emojiOptions" role="group" aria-label="Choisir une icône"></div></div><div class="form-row"><label>Couleur</label><div class="color-options" id="colorOptions" role="group" aria-label="Choisir une couleur"></div></div><div class="dialog-actions"><button class="btn btn-danger" type="button" id="deleteBtn" hidden>Supprimer</button><div class="dialog-actions-end"><button class="btn btn-secondary" type="button" id="cancelBtn">Annuler</button><button class="btn" type="submit" id="saveBtn">Enregistrer</button></div></div></form>
+  </section></div>
+
+  <div class="overlay" id="settingsOverlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="settingsHeading"><div class="dialog-header"><div><h2 id="settingsHeading">Réglages</h2><p>Ton espace, tes données, tes choix.</p></div><button class="close" id="settingsClose" aria-label="Fermer" type="button">✕</button></div>
+    <div class="settings-section"><h3>📲 Installer sur ton iPhone</h3><p>Pour avoir cette appli sur ton écran d'accueil, ouvre son adresse avec <strong>Safari</strong>, puis :</p><ol><li>Touche le bouton <strong>Partager</strong> de Safari.</li><li>Choisis <strong>Sur l'écran d'accueil</strong> (parfois dans « Plus »).</li><li>Valide avec <strong>Ajouter</strong>.</li></ol><p>La première installation nécessite que ce dossier soit publié sur une adresse HTTPS. Une fois installée, l'interface reste accessible hors ligne.</p></div>
+    <div class="settings-section"><h3>💾 Mes sauvegardes</h3><p>Tes projets sont enregistrés sur cet appareil, dans ce navigateur. Exporte une copie pour les récupérer sur un autre iPhone ou après une réinstallation.</p><div class="settings-row"><button class="btn btn-secondary" id="exportBtn" type="button">↓ Exporter mes projets</button><button class="btn btn-secondary" id="importBtn" type="button">↑ Importer une sauvegarde</button></div><input id="importInput" type="file" accept="application/json,.json" hidden></div>
+    <div class="settings-section"><h3>🗑️ Tout effacer</h3><p>Supprime tous les projets sauvegardés sur cet appareil. Cette action est définitive sans sauvegarde.</p><button class="btn btn-danger" type="button" id="clearBtn">Supprimer tous les projets</button></div>
+    <div class="settings-footer">Mes Projets · v1.0 — Gratuit, sans compte, sans publicité. Les liens externes s'ouvrent avec le navigateur ou l'application correspondante si iOS le permet.</div>
+  </section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    'use strict';
+    const KEY = 'mes-projets-v1';
+    const ICONS = ['🌐','📱','🚀','🎨','💼','🛍️','💡','📊','🎮','📚','⚙️','🔗'];
+    const COLORS = ['#9e87ff','#5cb6fa','#64d2a0','#f8bd6a','#f58fab','#88a0d9'];
+    const TYPES = {site:'Site web',app:'Application',other:'Autre projet'};
+    const $ = id => document.getElementById(id);
+    const escAttr = value => value.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+    const uid = () => (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36)+'-'+Math.random().toString(36).slice(2));
+    let projects = load();
+    let filter = 'all', term = '', sort = 'recent', editingId = null, selectedIcon = '🌐', selectedColor = COLORS[0], returnFocus = null, toastTimer;
+
+    function getSafeUrl(value) {
+      if (typeof value !== 'string') return null;
+      let input = value.trim();
+      if (!input || input.length > 2000 || /[\u0000-\u001f\u007f]/.test(input)) return null;
+      if (!/^[a-z][a-z0-9+.-]*:/i.test(input)) input = 'https://' + input;
+      try {
+        const parsed = new URL(input);
+        const protocol = parsed.protocol.slice(0, -1).toLowerCase();
+        if (['javascript','data','file','blob','about','vbscript','chrome','safari','ms-settings'].includes(protocol)) return null;
+        if (['https','http'].includes(protocol)) return parsed.hostname ? parsed.href : null;
+        // Universal deep links may use a registered app scheme, such as notion:// or shortcuts://.
+        if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(input) || !parsed.hostname) return null;
+        return input;
+      } catch {return null;}
+    }
+    function cleaned(item) {
+      if (!item || typeof item !== 'object') return null;
+      const name = typeof item.name === 'string' ? item.name.trim().slice(0,60) : '';
+      const url = getSafeUrl(item.url);
+      if (!name || !url) return null;
+      return {id:typeof item.id === 'string' && item.id.length < 110 ? item.id : uid(),name,url,type:TYPES[item.type] ? item.type : 'other',description:typeof item.description==='string'?item.description.trim().slice(0,180):'',icon:ICONS.includes(item.icon)?item.icon:'🔗',color:COLORS.includes(item.color)?item.color:COLORS[0],favorite: item.favorite===true,created:Number.isFinite(item.created)?item.created:Date.now()};
+    }
+    function load() { try {const stored=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(stored)?stored.slice(0,1000).map(cleaned).filter(Boolean):[]} catch{return []} }
+    function save() { try{localStorage.setItem(KEY,JSON.stringify(projects));return true}catch{showToast('Impossible d’enregistrer : espace saturé ou privé.');return false} }
+    function showToast(message){const node=$('toast');node.textContent=message;node.classList.add('shown');clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove('shown'),3100)}
+    function icon(name,size=19){
+      const icons={star:'<path d="m12 3 2.78 5.63 6.22.9-4.5 4.38 1.06 6.2L12 17.19l-5.56 2.92 1.06-6.2L3 9.53l6.22-.9L12 3Z"/>',edit:'<path d="M12 20h9M16.8 3.8a2.1 2.1 0 0 1 3 3L9.4 17.2 5 18l.8-4.4L16.8 3.8Z"/>',arrow:'<path d="M7 17 17 7M8 7h9v9"/>',plus:'<path d="M12 5v14M5 12h14"/>'};
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]||''}</svg>`;
+    }
+    function shade(hex){const num=parseInt(hex.slice(1),16),r=(num>>16)&255,g=(num>>8)&255,b=num&255;return `rgba(${r},${g},${b},.15)`;}
+    function domainLabel(url) {try{const u=new URL(url);return u.protocol==='https:'||u.protocol==='http:'?u.hostname.replace(/^www\./,''):u.protocol.replace(':','')+' · lien d’app'}catch{return 'Lien externe'}}
+    function render(){
+      $('projectCount').textContent=String(projects.length);
+      $('projectWord').textContent=projects.length===1?'projet':'projets';
+      const faves=projects.filter(p=>p.favorite).length;
+      $('favoriteSummary').textContent=projects.length?`${faves} favori${faves>1?'s':''} · Tout est à portée de main`:'Ton espace est prêt à être rempli ✨';
+      document.querySelectorAll('.tab').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.filter===filter)));
+      const normalize=value=>value.toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      const query=normalize(term.trim());
+      let visible=projects.filter(p=>(filter==='all'||filter==='favorite'&&p.favorite||p.type===filter)&&(!query||normalize(p.name+' '+p.description+' '+p.url).includes(query)));
+      visible.sort((a,b)=>sort==='alpha'?a.name.localeCompare(b.name,'fr'):b.created-a.created);
+      $('visibleCount').textContent=`${visible.length} projet${visible.length===1?'':'s'}`;
+      const grid=$('projects');grid.replaceChildren();
+      for (const p of visible){
+        const card=document.createElement('article');card.className='card';card.style.setProperty('--card-tint',shade(p.color));
+        const head=document.createElement('div');head.className='card-head';
+        const emoji=document.createElement('div');emoji.className='project-emoji';emoji.textContent=p.icon;
+        const actions=document.createElement('div');actions.className='card-actions';
+        const star=document.createElement('button');star.type='button';star.className=p.favorite?'faved':'';star.setAttribute('aria-label',p.favorite?'Retirer des favoris':'Ajouter aux favoris');star.title=p.favorite?'Retirer des favoris':'Ajouter aux favoris';star.innerHTML=icon('star',19);star.setAttribute('aria-pressed',String(p.favorite));star.addEventListener('click',()=>{p.favorite=!p.favorite;save();render();showToast(p.favorite?'Ajouté aux favoris ★':'Retiré des favoris')});
+        const edit=document.createElement('button');edit.type='button';edit.title='Modifier';edit.setAttribute('aria-label',`Modifier ${p.name}`);edit.innerHTML=icon('edit',17);edit.addEventListener('click',()=>openEdit(p.id));
+        actions.append(star,edit);head.append(emoji,actions);
+        const title=document.createElement('h3');title.className='card-title';title.textContent=p.name;
+        const desc=document.createElement('div');desc.className='card-desc';desc.textContent=p.description||domainLabel(p.url);
+        const bottom=document.createElement('div');bottom.className='card-bottom';
+        const category=document.createElement('span');category.className='category';category.textContent=TYPES[p.type];
+        const open=document.createElement('button');open.className='open-btn';open.type='button';open.innerHTML='Ouvrir '+icon('arrow',14);open.setAttribute('aria-label',`Ouvrir ${p.name}`);open.addEventListener('click',()=>openProject(p.url));
+        bottom.append(category,open);card.append(head,title,desc,bottom);grid.append(card);
+      }
+      const empty=visible.length===0;$('empty').hidden=!empty;$('projects').hidden=empty;
+      $('emptyTitle').textContent=projects.length===0?'Ton prochain projet commence ici':'Aucun projet trouvé';
+      $('emptyText').textContent=projects.length===0?'Ajoute ton premier site ou ta première application pour y accéder directement depuis ton iPhone.':'Essaie une autre recherche ou un autre filtre, ou ajoute un nouveau projet.';
+      $('emptyAdd').textContent=projects.length===0?'+ Ajouter un projet':'+ Nouveau projet';
+    }
+    function openProject(url) {const safe=getSafeUrl(url);if(!safe){showToast('Lien invalide. Modifie le projet.');return}if(/^https?:/i.test(safe)){const a=document.createElement('a');a.href=safe;a.target='_blank';a.rel='noopener noreferrer';document.body.append(a);a.click();a.remove()}else{window.location.assign(safe)}}
+    function openOverlay(node){returnFocus=document.activeElement;node.hidden=false;document.body.style.overflow='hidden';const focusable=node.querySelector('input:not([hidden]),button:not([hidden])');if(focusable)setTimeout(()=>focusable.focus(),30)}
+    function closeOverlay(node){node.hidden=true;document.body.style.overflow='';if(returnFocus&&document.contains(returnFocus))returnFocus.focus()}
+    function pickIcon(value){selectedIcon=value;document.querySelectorAll('.emoji-option').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.icon===value)))}
+    function pickColor(value){selectedColor=value;document.querySelectorAll('.color-choice').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.color===value)))}
+    function openEdit(id=null){
+      editingId=id;const item=projects.find(p=>p.id===id);
+      $('projectForm').reset();$('editHeading').textContent=item?'Modifier le projet':'Ajouter un projet';
+      $('nameField').value=item?.name||'';$('urlField').value=item?.url||'';$('typeField').value=item?.type||'site';$('descriptionField').value=item?.description||'';
+      $('deleteBtn').hidden=!item;pickIcon(item?.icon||(item?.type==='app'?'📱':'🌐'));pickColor(item?.color||COLORS[0]);openOverlay($('editOverlay'));
+      setTimeout(()=>$('nameField').focus(),55);
+    }
+    function closeEdit(){closeOverlay($('editOverlay'))}
+    function openSettings(){openOverlay($('settingsOverlay'))}
+    function closeSettings(){closeOverlay($('settingsOverlay'))}
+    function updateDefaultIcon(){if(!editingId)pickIcon($('typeField').value==='app'?'📱':$('typeField').value==='site'?'🌐':'💡')}
+    for (const value of ICONS){const btn=document.createElement('button');btn.type='button';btn.className='emoji-option';btn.dataset.icon=value;btn.textContent=value;btn.setAttribute('aria-label',`Choisir ${value}`);btn.addEventListener('click',()=>pickIcon(value));$('emojiOptions').append(btn)}
+    for (const value of COLORS){const btn=document.createElement('button');btn.type='button';btn.className='color-choice';btn.dataset.color=value;btn.style.setProperty('--swatch',value);btn.setAttribute('aria-label',`Choisir la couleur ${value}`);btn.addEventListener('click',()=>pickColor(value));$('colorOptions').append(btn)}
+    $('projectForm').addEventListener('submit',event=>{
+      event.preventDefault();const name=$('nameField').value.trim();const url=getSafeUrl($('urlField').value);
+      if(!name){$('nameField').focus();return}if(!url){$('urlField').setCustomValidity('Saisis une adresse valide, comme https://monsite.fr');$('urlField').reportValidity();$('urlField').setCustomValidity('');return}
+      const existing=projects.find(p=>p.id===editingId);
+      const value={id:existing?.id||uid(),name:name.slice(0,60),url,type:$('typeField').value,description:$('descriptionField').value.trim().slice(0,180),icon:selectedIcon,color:selectedColor,favorite:existing?.favorite||false,created:existing?.created||Date.now()};
+      if(existing){Object.assign(existing,value)}else{projects.unshift(value)}save();closeEdit();filter='all';$('search').value='';term='';render();showToast(existing?'Projet modifié ✓':'Projet ajouté ✓');
+    });
+    $('deleteBtn').addEventListener('click',()=>{const item=projects.find(p=>p.id===editingId);if(!item)return;if(!confirm(`Supprimer « ${item.name} » ?`))return;projects=projects.filter(p=>p.id!==editingId);save();closeEdit();render();showToast('Projet supprimé')});
+    $('heroAdd').addEventListener('click',()=>openEdit());$('emptyAdd').addEventListener('click',()=>openEdit());$('addNav').addEventListener('click',()=>openEdit());
+    $('settingsNav').addEventListener('click',openSettings);$('settingsTop').addEventListener('click',openSettings);
+    $('homeNav').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});$('search').focus({preventScroll:true})});
+    $('editClose').addEventListener('click',closeEdit);$('cancelBtn').addEventListener('click',closeEdit);$('settingsClose').addEventListener('click',closeSettings);
+    $('editOverlay').addEventListener('click',e=>{if(e.target===$('editOverlay'))closeEdit()});
+    $('settingsOverlay').addEventListener('click',e=>{if(e.target===$('settingsOverlay'))closeSettings()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('editOverlay').hidden)closeEdit();else if(!$('settingsOverlay').hidden)closeSettings()}});
+    $('typeField').addEventListener('change',updateDefaultIcon);
+    $('search').addEventListener('input',event=>{term=event.target.value;render()});
+    document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{filter=btn.dataset.filter;render()}));
+    $('sortBtn').addEventListener('click',()=>{sort=sort==='recent'?'alpha':'recent';$('sortLabel').textContent=sort==='recent'?'Récents':'A → Z';render()});
+    $('exportBtn').addEventListener('click',()=>{
+      const data={app:'mes-projets',version:1,exportedAt:new Date().toISOString(),projects};
+      const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      const anchor=document.createElement('a');const temp=URL.createObjectURL(blob);anchor.href=temp;anchor.download='mes-projets-sauvegarde.json';document.body.append(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(temp),6000);showToast('Sauvegarde prête à télécharger');
+    });
+    $('importBtn').addEventListener('click',()=>$('importInput').click());
+    $('importInput').addEventListener('change',async e=>{
+      const file=e.target.files[0];e.target.value='';if(!file)return;
+      if(file.size>2_000_000){showToast('Sauvegarde trop volumineuse (2 Mo max)');return}
+      try{
+        const data=JSON.parse(await file.text());const rows=Array.isArray(data)?data:data?.projects;
+        if(!Array.isArray(rows)||rows.length>1000)throw Error('format');
+        const cleanedRows=rows.map(cleaned);if(cleanedRows.some(p=>!p))throw Error('invalid');
+        const unique=new Set();const imported=cleanedRows.map(p=>{if(unique.has(p.id))p.id=uid();unique.add(p.id);return p});
+        if(!confirm(`Remplacer tes ${projects.length} projet(s) actuels par les ${imported.length} projet(s) de la sauvegarde ?`))return;
+        projects=imported;save();closeSettings();filter='all';term='';$('search').value='';render();showToast(`${imported.length} projets importés ✓`);
+      }catch{showToast('Fichier non reconnu : utilise une sauvegarde JSON valide')}
+    });
+    $('clearBtn').addEventListener('click',()=>{if(!projects.length){showToast('Aucun projet à supprimer');return}if(!confirm(`Effacer définitivement tes ${projects.length} projet(s) ?`))return;projects=[];save();closeSettings();render();showToast('Tous les projets ont été supprimés')});
+    render();
+    if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){
+      window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+    }
+  })();
+  </script>
+</body>
+</html>
